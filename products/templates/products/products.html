@@ -1,0 +1,25 @@
+{% extends 'products/base.html' %}
+
+{% block header %}
+    {% block title %}Книжный магазин онлайн{% endblock %}
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid mt-5">
+        <h1 align="center">Книги в наличии</h1>
+    </div>
+    <div class="album py-5 bg-light">
+        <div class="container mt-5">
+             <div class="row">
+                {% for product in products_list %}
+                     <div class="col-md-4" align="center">
+                         <img src="{{ product.image.url }}" width="225" height="350"/>
+                         <h4>{{ product.price }} руб</h4>
+                         <h5><a href="{% url 'products:product' product.id %}">{{ product.name }} {{ product.author }}</a></h5>
+                     </div>
+                {% endfor %}
+             </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,23 @@
+{% extends 'products/base.html' %}
+
+{% block header %}
+    {% block title %}{{ product.name }} {{ product.author }} {% endblock %}
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid mt-5">
+        <h2>{{ product.name }} {{ product.author }}</h2>
+        <div class="row">
+            <div class="col-md-4">
+               <img src="{{ product.image.url }}" width="225" height="350"/>
+            </div>
+            <div class="col-md-4" align="left">
+                <p><b>Описание:</b> {{ product.description }}</p>
+                <p><b>Цена:</b> {{ product.price}} руб</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a href="{% url 'products:products' %}">Назад к списку товаров</a>
+    </div>
+{% endblock %}
